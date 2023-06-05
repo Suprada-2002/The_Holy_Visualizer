@@ -1,0 +1,66 @@
+$pri: #202020;
+$sec: #303030;
+$tri: #404040;
+$hl: #047dffcb;
+$fg: #bbb;
+
+$mobile: 860px;
+
+@mixin shadow {
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
+}
+@mixin cover($src) {
+  background-image: url($src);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@mixin sans {
+  font-family: "Montserrat", sans-serif;
+}
+@mixin section($height, $width) {
+  height: $height;
+  width: $width;
+}
+@mixin grid($column, $row) {
+  display: grid;
+  grid-template-columns: $column;
+  grid-template-rows: $row;
+}
+@mixin fullscreen {
+  height: 100vh;
+  width: 100vw;
+}
+@mixin absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@mixin fixed($top, $left) {
+  position: fixed;
+  top: $top;
+  left: $left;
+}
+@mixin flex($dir) {
+  display: flex;
+  flex-direction: $dir;
+}
+@mixin flex-center {
+  justify-content: center;
+  align-items: center;
+}
+@mixin no-padding-margin {
+  padding: 0;
+  margin: 0;
+}
+@mixin mono {
+  font-family: "Source Code Pro", monospace;
+}
+@mixin cursive {
+  font-family: "Caveat", cursive;
+}
+@mixin para {
+  width: 80vw;
+  max-width: 800px;
+  text-align: center;
+}
