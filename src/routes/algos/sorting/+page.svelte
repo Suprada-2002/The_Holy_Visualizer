@@ -5,11 +5,10 @@
 
   let name = $page.url.searchParams.get("q");
   const algo = alogrithms[name];
-  if (typeof algo == "undefined") console.error("notounf");
+  if (typeof algo == "undefined") console.error("invalid name of algorithim");
 
   // first letter to uppercase
   const description = content[name];
-  console.log(name);
   name = name.split("");
   name[0] = name[0].toUpperCase();
   name = name.join("");
