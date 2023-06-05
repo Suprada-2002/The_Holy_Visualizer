@@ -1,7 +1,3 @@
-<script>
-    import "../style.css"
-    </script>
-
 <nav>
     <ul><a>THolyV</a></ul>
     <ul>
