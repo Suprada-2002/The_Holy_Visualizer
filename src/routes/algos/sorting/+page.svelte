@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from "svelte";
   import { page } from "$app/stores";
   import alogrithms, { content } from "./algorithm.js";
 
@@ -13,16 +14,20 @@
   name[0] = name[0].toUpperCase();
   name = name.join("");
 
-  let bars = initRandomBars(10);
-  const delay = ms => new Promise(res => setTimeout(res, ms));
-  const update = async (newBars) => { 
-    bars = newBars;
-    await delay(500);
-    for (const bar of bars) bar.hl = 0;
-  }
-  const end = () => console.log("Finished");
+  let bars = [];
+  onMount(() => {
+    const n = Math.floor(window.innerWidth / 70);
+    bars = initRandomBars(n);
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    const update = async (newBars) => { 
+      bars = newBars;
+      await delay(500);
+      for (const bar of bars) bar.hl = 0;
+    }
+    const end = () => console.log("Finished");
 
-  algo(bars, update, end, 500);
+    algo(bars, update, end, 500);
+  });
 
   function initRandomBars(n) {
     const bars = [];
@@ -30,33 +35,37 @@
       const rand = Math.floor(Math.random() * 100);
       bars.push({
         number: rand,
-        height: (rand / 100) * 80,
+        height: ((rand / 100) * 45) + 10,
       });
     }
     return bars;
   }
 </script>
 
-<h1> {name} Sort </h1>
-<p>
-  {#each Object.entries(description.time) as [scenerio, complexity]}
-  {scenerio} is O({complexity}) <br>
-  {/each}
-</p>
-<section>
+
+<section id="content">
+  <h1> {name} Sort </h1>
+  <p>
+    {#each Object.entries(description.time) as [scenerio, complexity]}
+      {scenerio} case: O({complexity[0]}) comparision and O({complexity[1]}) swaps<br>
+    {/each}
+  </p>
+</section>
+<section id="visuals">
   {#each bars as {height, number, hl}}
   <div style="height: {height}vh;" class={"hl" + hl}>{number}</div>
   {/each}
 </section>
 
 <style lang="scss">
-  main {
-    @include fullscreen;
-    @include flex(row);
-    @include flex-center;
+  h1 {
+    @include heading;
   }
-  section {
-    @include section(80vh, 90vw);
+  #content {
+    @include section($content-section-height, $section-width);
+  }
+  #visuals {
+    @include section($visual-section-height, $section-width);
     @include flex(row);
     justify-content: center;
     align-items: end;
@@ -67,10 +76,14 @@
     @include flex(column);
     align-items: center;
     width: 5vw;
+    max-width: 40px;
     border-radius: 2%;
     border: 4px solid $tri;
   }
   .hl1 {
     border-color: $hl;
+  }
+  .hl2 {
+    border-color: red;
   }
 </style>

@@ -6,6 +6,13 @@ $fg: #bbb;
 
 $mobile: 860px;
 
+$section-width: 90vw;
+$navbar-height: 5vh;
+$navbar-max-height: 200px;
+$footer-height: 5vh;
+$content-section-height: 25vh;
+$visual-section-height: 55vh;
+
 @mixin shadow {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
 }
@@ -21,6 +28,9 @@ $mobile: 860px;
 @mixin section($height, $width) {
   height: $height;
   width: $width;
+}
+@mixin heading {
+  border-bottom: 1px solid $sec;
 }
 @mixin grid($column, $row) {
   display: grid;
@@ -60,6 +70,7 @@ $mobile: 860px;
   font-family: "Caveat", cursive;
 }
 @mixin para {
+  @include sans;
   width: 80vw;
   max-width: 800px;
   text-align: center;
