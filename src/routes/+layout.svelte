@@ -1,7 +1,7 @@
 <main>
   <nav>
     <ul>
-      <a>THolyV</a>
+      <a href="">THolyV</a>
     </ul>
     <ul>
       <li><a href="/">Home</a></li>
@@ -16,12 +16,9 @@
   main {
     @include absolute;
     @include fullscreen;
-    @include flex(column);
     background-color: $pri;
     justify-content: space-between;
-    align-items: center;
-    overflow-x: hidden;
-    overflow-y: auto;
+    color: $fg;
   }
   nav {
     @include section($navbar-height, 100vw);
