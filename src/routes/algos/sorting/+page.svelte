@@ -1,11 +1,11 @@
 <script>
   import { onMount } from "svelte";
   import { page } from "$app/stores";
-  import alogrithms, { content } from "./algorithm.js";
+  import algorithims, { content } from "./algorithm.js";
 
   let name = $page.url.searchParams.get("q");
   console.log($page);
-  const algo = alogrithms[name];
+  const algo = algorithims[name];
   if (typeof algo == "undefined") console.error("invalid name of algorithim");
 
   let timeOutId;
