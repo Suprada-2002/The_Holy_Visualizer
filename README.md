@@ -1,3 +1,3 @@
-## The Holy Visualizer
+# The Holy Visualizer
 
-<b>Work in progress..</b>
+still a work in progress
